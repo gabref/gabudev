@@ -14,9 +14,9 @@ jobs:
     strategy:
       matrix:
         service:
-          - name: blog
+          - name: blog:latest
             path: ./blog
-          - name: portfolio
+          - name: portfolio:latest
             path: ./portfolio
 
     steps:
@@ -28,8 +28,8 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build ${{ matrix.service.path }} -t ${{ env.REGISTRY }}/${{ matrix.service.name }}
-          docker push ${{ env.REGISTRY }}/${{ matrix.service.name }}
+          docker build ${{ matrix.service.path }} -t ${{ env.REGISTRY }}/${{ github.actor }}/${{ matrix.service.name }}
+          docker push ${{ env.REGISTRY }}/${{ github.actor }}/${{ matrix.service.name }}
 
   deploy:
     needs: build-and-push
