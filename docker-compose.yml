@@ -1,0 +1,47 @@
+services:
+
+  blog:
+    build:
+      context: ./blog
+      dockerfile: Dockerfile
+    container_name: blog
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./blog:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+
+  portfolio:
+    build: 
+      context: ./portfolio
+      dockerfile: Dockerfile
+    container_name: portfolio
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
+  # traefik:
+  #   image: docker.io/library/traefik:v3.1.6
+  #   container_name: traefik
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #     - "8080:8080"
+  #   volumes:
+  #     - /run/docker.sock:/run/docker.sock:ro
+  #     - ./config/traefik.yml:/etc/traefik/traefik.yml:ro
+  #     - ./config/conf.d/:/etc/traefik/conf.d/:ro
+  #     - ./certs/:/var/traefik/certs/:rw
+
+networks:
+  app-network:
+    driver: bridge
