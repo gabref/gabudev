@@ -6,8 +6,8 @@ let typed = new Typed('.typing', {
 		'Robotics interested', 
 		'Fullstack Developer', 
 		'Math Passionate', 
-		'Embedded Systems Dev'
-		'Back-end Developer'
+		'Embedded Systems Dev',
+		'Back-end Developer',
 	],
     typeSpeed: 100,
     BackSpeed: 60,

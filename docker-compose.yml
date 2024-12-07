@@ -28,20 +28,6 @@ services:
     networks:
       - app-network
 
-  # traefik:
-  #   image: docker.io/library/traefik:v3.1.6
-  #   container_name: traefik
-  #   restart: unless-stopped
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #     - "8080:8080"
-  #   volumes:
-  #     - /run/docker.sock:/run/docker.sock:ro
-  #     - ./config/traefik.yml:/etc/traefik/traefik.yml:ro
-  #     - ./config/conf.d/:/etc/traefik/conf.d/:ro
-  #     - ./certs/:/var/traefik/certs/:rw
-
 networks:
   app-network:
     driver: bridge
