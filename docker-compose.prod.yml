@@ -1,0 +1,33 @@
+services:
+
+  blog:
+    image: ghcr.io/gabref/blog:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - vps-reverse
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.blog.rule=Host(`blog.gabudev.cloud`)
+      - traefik.http.routers.blog.tls=true
+      - traefik.http.routers.blog.tls.certresolver=myresolver
+
+  portfolio:
+    image: ghcr.io/gabref/portfolio:latest
+    restart: unless-stopped
+    ports:
+      - "3001:80"
+    networks:
+      - vps-reverse
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portfolio.rule=Host(`gabudev.cloud`)
+      - traefik.http.routers.portfolio.tls=true
+      - traefik.http.routers.portfolio.tls.certresolver=myresolver
+
+networks:
+  vps-reverse:
+    external: true
