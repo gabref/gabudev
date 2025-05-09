@@ -1,201 +1,272 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Listino Prezzi – Hosting e Manutenzione</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 40px 20px;
-      background: linear-gradient(145deg, #f2f6f9, #e7edf2);
-      color: #333;
-    }
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Listino Prezzi – Hosting e Manutenzione</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+	<style>
+		body {
+			font-family: 'Inter', sans-serif;
+			margin: 0;
+			padding: 20px;
+			background: linear-gradient(145deg, #f2f6f9, #e7edf2);
+			color: #333;
+		}
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      padding: 40px;
-    }
+		.container {
+			max-width: 900px;
+			margin: 0 auto;
+			background: #fff;
+			border-radius: 12px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+			padding: 40px;
+		}
 
-    h1, h2 {
-      color: #1a1a1a;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 6px;
-      margin-top: 40px;
-    }
+		h1,
+		h2 {
+			color: #1a1a1a;
+			border-bottom: 2px solid #eee;
+			padding-bottom: 6px;
 
-    h1 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-    }
+			margin-top: 40px;
+		}
 
-    h2 {
-      font-size: 1.4em;
-      margin-top: 2.5em;
-    }
+		h1 {
+			font-size: 2em;
+			margin-bottom: 0.5em;
+		}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5em 0;
-    }
+		h2 {
+			font-size: 1.4em;
+			margin-top: 2.5em;
+		}
 
-    th, td {
-      padding: 14px 16px;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
-      vertical-align: top;
-    }
+		.table-wrapper {
+			overflow-x: auto;
+		}
 
-    th {
-      background-color: #f9fafc;
-      font-weight: 600;
-    }
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 1.5em 0;
+			min-width: 600px;
+		}
 
-    .highlight {
-      background-color: #eef6fc;
-      font-weight: 600;
-    }
 
-    .note, .extra-note {
-      font-size: 0.95em;
-      color: #555;
-      margin-top: 0.8em;
-    }
+		th,
+		td {
 
-    .extra-note {
-      background: #fff8e1;
-      padding: 12px;
-      border-left: 4px solid #ffc107;
-      margin-top: 20px;
-      border-radius: 6px;
-    }
+			padding: 14px 16px;
+			border-bottom: 1px solid #ddd;
+			text-align: left;
+			vertical-align: top;
+		}
 
-    @media print {
-      body {
-        background: #fff;
-      }
-      .container {
-        box-shadow: none;
-        border: none;
-      }
-    }
-  </style>
+
+		th {
+			background-color: #f9fafc;
+			font-weight: 600;
+		}
+
+
+		.highlight {
+			background-color: #eef6fc;
+			font-weight: 600;
+		}
+
+
+		.note,
+		.extra-note {
+			font-size: 0.95em;
+			color: #555;
+			margin-top: 0.8em;
+		}
+
+		.extra-note {
+			background: #fff8e1;
+			padding: 12px;
+			border-left: 4px solid #ffc107;
+
+			margin-top: 20px;
+			border-radius: 6px;
+
+		}
+
+		@media (max-width: 600px) {
+			body {
+				padding: 10px;
+			}
+
+
+			.container {
+				padding: 20px;
+			}
+
+			h1 {
+				font-size: 1.5em;
+			}
+
+			h2 {
+				font-size: 1.2em;
+			}
+
+
+			th,
+			td {
+				padding: 10px 12px;
+			}
+
+			table {
+				font-size: 0.95em;
+			}
+		}
+
+
+		@media print {
+			body {
+				background: #fff;
+			}
+
+
+			.container {
+				box-shadow: none;
+				border: none;
+			}
+
+			.table-wrapper {
+				overflow: visible;
+			}
+
+		}
+	</style>
 </head>
+
 <body>
-  <div class="container">
+	<div class="container">
 
-    <h1>💼 Listino Prezzi – Hosting e Manutenzione Siti Web</h1>
+		<h1>💼 Listino Prezzi – Hosting e Manutenzione Siti Web</h1>
 
-    <h2>🌐 WordPress</h2>
-    <table>
-      <tr>
-        <th>Servizio</th>
-        <th>Prezzo</th>
-        <th>Dettagli</th>
-      </tr>
-      <tr>
-        <td>Hosting WordPress (gestito)</td>
-        <td>€120 / anno</td>
-        <td>Spazio web e SSL inclusi. Dominio/email esclusi (fornisco indicazioni).</td>
-      </tr>
-      <tr>
-        <td>Manutenzione Completa WordPress</td>
-        <td>€20 / mese</td>
-        <td>Aggiornamenti mensili, backup, sicurezza, gestione dominio/email.</td>
-      </tr>
-      <tr>
-        <td>Modifica testo o immagine</td>
-        <td>€15 / intervento</td>
-        <td>Entro 30 minuti di lavoro.</td>
-      </tr>
-      <tr>
-        <td>Piccolo aggiornamento funzionale</td>
-        <td>€20 / intervento</td>
-        <td>Nuove sezioni, immagini, link, ecc.</td>
-      </tr>
-      <tr class="highlight">
-        <td>Pacchetto WordPress Consigliato</td>
-        <td>€300 / anno</td>
-        <td>Hosting + manutenzione completa (pagamento annuale).</td>
-      </tr>
-    </table>
+		<h2>🌐 WordPress</h2>
 
-    <h2>⚡ Siti Statici Veloci e Leggeri (senza Wordpress)</h2>
-    <table>
-      <tr>
-        <th>Servizio</th>
-        <th>Prezzo</th>
-        <th>Dettagli</th>
-      </tr>
-      <tr>
-        <td>Hosting Statico</td>
-        <td>€80 / anno</td>
-        <td>Spazio web e SSL inclusi. Dominio/email esclusi (fornisco indicazioni).</td>
-      </tr>
-      <tr>
-        <td>Manutenzione Base</td>
-        <td>€8 / mese</td>
-        <td>Controlli periodici, uptime, gestione dominio/email.</td>
-      </tr>
-      <tr>
-        <td>Modifica testo o immagine</td>
-        <td>€15 / intervento</td>
-        <td>Entro 30 minuti di lavoro.</td>
-      </tr>
-      <tr>
-        <td>Piccolo aggiornamento funzionale</td>
-        <td>€20 / intervento</td>
-        <td>Aggiunta contenuti, immagini, nuove sezioni.</td>
-      </tr>
-      <tr class="highlight">
-        <td>Pacchetto Statico Consigliato</td>
-        <td>€176 / anno</td>
-        <td>Hosting + manutenzione + 2 modifiche/mese incluse.</td>
-      </tr>
-    </table>
+		<div class="table-wrapper">
+			<table>
 
-    <h2>🧩 Siti Statici con Backend (API o CMS)</h2>
-    <table>
-      <tr>
-        <th>Servizio</th>
-        <th>Prezzo</th>
-        <th>Dettagli</th>
-      </tr>
-      <tr>
-        <td>Hosting Statico con Backend</td>
-        <td>€100 / anno</td>
-        <td>Incluso supporto API esterne o CMS headless. SSL incluso.</td>
-      </tr>
-      <tr>
-        <td>Manutenzione Avanzata</td>
-        <td>€12 / mese</td>
-        <td>Verifica backend/API, uptime, sicurezza, gestione dominio/email.</td>
-      </tr>
-      <tr>
-        <td>Modifiche / Supporto API</td>
-        <td>€20–30 / intervento</td>
-        <td>In base alla complessità dell’integrazione.</td>
-      </tr>
-      <tr class="highlight">
-        <td>Pacchetto Statico + Backend</td>
-        <td>€244 / anno</td>
-        <td>Hosting + manutenzione + 2 modifiche/mese incluse.</td>
-      </tr>
-    </table>
+				<tr>
+					<th>Servizio</th>
+					<th>Prezzo</th>
+					<th>Dettagli</th>
+				</tr>
+				<tr>
+					<td>Hosting WordPress (gestito)</td>
+					<td>€120 / anno</td>
+					<td>Spazio web e SSL inclusi. Dominio/email esclusi (fornisco indicazioni).</td>
+				</tr>
+				<tr>
+					<td>Manutenzione Completa WordPress</td>
+					<td>€20 / mese</td>
+					<td>Aggiornamenti mensili, backup, sicurezza, gestione dominio/email.</td>
+				</tr>
+				<tr>
+					<td>Modifica testo o immagine</td>
+					<td>€15 / intervento</td>
+					<td>Entro 30 minuti di lavoro.</td>
+				</tr>
+				<tr>
+					<td>Piccolo aggiornamento funzionale</td>
+					<td>€20 / intervento</td>
 
-    <div class="extra-note">
-      💡 <strong>Nota:</strong> Per siti statici con backend particolarmente estesi, con traffico elevato o funzionalità complesse, i prezzi potrebbero essere rivisti con preventivo personalizzato.
-    </div>
+					<td>Nuove sezioni, immagini, link, ecc.</td>
+				</tr>
+				<tr class="highlight">
+					<td>Pacchetto WordPress Consigliato</td>
+					<td>€300 / anno</td>
+					<td>Hosting + manutenzione completa (pagamento annuale).</td>
+				</tr>
+			</table>
+		</div>
 
-    <p class="note">Tutti i prezzi sono IVA esclusa. I pacchetti includono pagamento annuale anticipato. Le modifiche incluse nei pacchetti non sono cumulabili. Contattami per esigenze personalizzate.</p>
+		<h2>⚡ Siti Statici Veloci e Leggeri (senza WordPress)</h2>
+		<div class="table-wrapper">
+			<table>
+				<tr>
+					<th>Servizio</th>
+					<th>Prezzo</th>
+					<th>Dettagli</th>
+				</tr>
+				<tr>
+					<td>Hosting Statico</td>
+					<td>€80 / anno</td>
 
-  </div>
+					<td>Spazio web e SSL inclusi. Dominio/email esclusi (fornisco indicazioni).</td>
+				</tr>
+				<tr>
+					<td>Manutenzione Base</td>
+					<td>€8 / mese</td>
+					<td>Controlli periodici, uptime, gestione dominio/email.</td>
+				</tr>
+				<tr>
+					<td>Modifica testo o immagine</td>
+					<td>€15 / intervento</td>
+					<td>Entro 30 minuti di lavoro.</td>
+				</tr>
+
+				<tr>
+					<td>Piccolo aggiornamento funzionale</td>
+					<td>€20 / intervento</td>
+					<td>Aggiunta contenuti, immagini, nuove sezioni.</td>
+				</tr>
+				<tr class="highlight">
+					<td>Pacchetto Statico Consigliato</td>
+					<td>€176 / anno</td>
+					<td>Hosting + manutenzione + 2 modifiche/mese incluse.</td>
+				</tr>
+			</table>
+		</div>
+
+		<h2>🧩 Siti Statici con Backend (API o CMS)</h2>
+		<div class="table-wrapper">
+			<table>
+				<tr>
+					<th>Servizio</th>
+					<th>Prezzo</th>
+					<th>Dettagli</th>
+
+				</tr>
+				<tr>
+					<td>Hosting Statico con Backend</td>
+					<td>€100 / anno</td>
+					<td>Incluso supporto API esterne o CMS headless. SSL incluso.</td>
+				</tr>
+				<tr>
+					<td>Manutenzione Avanzata</td>
+
+					<td>€12 / mese</td>
+					<td>Verifica backend/API, uptime, sicurezza, gestione dominio/email.</td>
+				</tr>
+				<tr>
+					<td>Modifiche / Supporto API</td>
+					<td>€20–30 / intervento</td>
+					<td>In base alla complessità dell’integrazione.</td>
+				</tr>
+				<tr class="highlight">
+					<td>Pacchetto Statico + Backend</td>
+					<td>€244 / anno</td>
+					<td>Hosting + manutenzione + 2 modifiche/mese incluse.</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="extra-note">
+			💡 <strong>Nota:</strong> Per siti statici con backend particolarmente estesi, con traffico elevato o
+			funzionalità complesse, i prezzi potrebbero essere rivisti con preventivo personalizzato.
+		</div>
+
+		<p class="note">Tutti i prezzi sono IVA esclusa. I pacchetti includono pagamento annuale anticipato. Le
+			modifiche incluse nei pacchetti non sono cumulabili. Contattami per esigenze personalizzate.</p>
+
+	</div>
 </body>
+
 </html>

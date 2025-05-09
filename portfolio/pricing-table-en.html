@@ -10,47 +10,53 @@
 		body {
 			font-family: 'Inter', sans-serif;
 			margin: 0;
-			padding: 40px 20px;
+			padding: 20px;
 			background: linear-gradient(145deg, #f2f6f9, #e7edf2);
-
 			color: #333;
 		}
-
 
 		.container {
 			max-width: 900px;
 			margin: 0 auto;
 			background: #fff;
 			border-radius: 12px;
+
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 			padding: 40px;
 		}
 
+
 		h1,
 		h2 {
+
 			color: #1a1a1a;
 			border-bottom: 2px solid #eee;
-
 			padding-bottom: 6px;
 			margin-top: 40px;
 		}
+
 
 		h1 {
 			font-size: 2em;
 			margin-bottom: 0.5em;
 		}
 
+
 		h2 {
 			font-size: 1.4em;
 			margin-top: 2.5em;
+		}
 
+		.table-wrapper {
+			overflow-x: auto;
 		}
 
 		table {
 			width: 100%;
 			border-collapse: collapse;
-			margin: 1.5em 0;
 
+			margin: 1.5em 0;
+			min-width: 600px;
 		}
 
 		th,
@@ -59,28 +65,33 @@
 			border-bottom: 1px solid #ddd;
 			text-align: left;
 			vertical-align: top;
+
 		}
 
 		th {
-			background-color: #f9fafc;
 
+			background-color: #f9fafc;
 			font-weight: 600;
+
 		}
 
 		.highlight {
-			background-color: #eef6fc;
 
+			background-color: #eef6fc;
 			font-weight: 600;
 		}
 
 		.note,
 		.extra-note {
+
 			font-size: 0.95em;
 			color: #555;
 			margin-top: 0.8em;
 		}
 
+
 		.extra-note {
+
 			background: #fff8e1;
 			padding: 12px;
 			border-left: 4px solid #ffc107;
@@ -88,161 +99,187 @@
 			border-radius: 6px;
 		}
 
+		@media (max-width: 600px) {
+			body {
+				padding: 10px;
+			}
+
+			.container {
+				padding: 20px;
+			}
+
+			h1 {
+				font-size: 1.5em;
+			}
+
+			h2 {
+				font-size: 1.2em;
+			}
+
+			th,
+			td {
+				padding: 10px 12px;
+			}
+
+
+			table {
+				font-size: 0.95em;
+			}
+		}
 
 		@media print {
+
 			body {
+
 				background: #fff;
 			}
 
 			.container {
 				box-shadow: none;
 				border: none;
+
+			}
+
+			.table-wrapper {
+
+				overflow: visible;
 			}
 		}
 	</style>
 </head>
 
 <body>
-
 	<div class="container">
-
 
 		<h1>💼 Pricing – Hosting & Website Maintenance</h1>
 
 		<h2>🌐 WordPress Websites</h2>
+		<div class="table-wrapper">
+			<table>
+				<tr>
+					<th>Service</th>
+					<th>Price</th>
+					<th>Details</th>
+				</tr>
+				<tr>
+					<td>Managed WordPress Hosting</td>
+					<td>€120 / year</td>
+					<td>Includes server space and SSL. Domain and email not included (I’ll guide you through the
+						purchase).</td>
+				</tr>
+				<tr>
+					<td>Full WordPress Maintenance</td>
+					<td>€20 / month</td>
+					<td>Monthly updates, backups, security, and domain/email management.</td>
+				</tr>
+				<tr>
+					<td>Text or Image Update</td>
+					<td>€15 / task</td>
+					<td>Quick edits within 30 minutes.</td>
+				</tr>
+				<tr>
+					<td>Small Functional Update</td>
+					<td>€20 / task</td>
 
-		<table>
-			<tr>
+					<td>New sections, images, buttons, or links.</td>
+				</tr>
+				<tr class="highlight">
+					<td>Recommended WordPress Package</td>
 
-				<th>Service</th>
-				<th>Price</th>
-
-				<th>Details</th>
-
-			</tr>
-			<tr>
-
-				<td>Managed WordPress Hosting</td>
-				<td>€120 / year</td>
-				<td>Includes server space and SSL. Domain and email not included (I provide guidance).</td>
-			</tr>
-
-			<tr>
-				<td>Full WordPress Maintenance</td>
-				<td>€20 / month</td>
-				<td>Monthly updates, backups, security, and domain/email management.</td>
-			</tr>
-			<tr>
-				<td>Text or Image Update</td>
-				<td>€15 / task</td>
-				<td>Quick changes within 30 minutes of work.</td>
-			</tr>
-			<tr>
-				<td>Small Functional Update</td>
-				<td>€20 / task</td>
-				<td>New section, image, button, or link.</td>
-
-			</tr>
-			<tr class="highlight">
-				<td>Recommended WordPress Package</td>
-				<td>€300 / year</td>
-				<td>Includes hosting + full maintenance (annual billing).</td>
-			</tr>
-		</table>
-
-		<h2>⚡ High-Performance Static Websites (no CMS)</h2>
-		<table>
-			<tr>
-				<th>Service</th>
-				<th>Price</th>
-				<th>Details</th>
-			</tr>
-			<tr>
-				<td>Static Site Hosting</td>
-				<td>€80 / year</td>
-
-				<td>Includes server space and SSL. Domain and email not included (I provide guidance).</td>
-			</tr>
-			<tr>
-				<td>Basic Maintenance</td>
-				<td>€8 / month</td>
-				<td>Quarterly checkups, uptime monitoring, domain/email management.</td>
-			</tr>
-			<tr>
-				<td>Text or Image Update</td>
-				<td>€15 / task</td>
-
-				<td>Quick content edits within 30 minutes.</td>
-
-			</tr>
-			<tr>
-
-				<td>Small Functional Update</td>
-				<td>€20 / task</td>
-
-				<td>Adding content blocks, sections, or visuals.</td>
-			</tr>
-			<tr class="highlight">
-				<td>Recommended Static Website Package</td>
-
-				<td>€176 / year</td>
-				<td>Includes hosting + maintenance + 2 monthly updates included.</td>
-			</tr>
-		</table>
-
-
-		<h2>🧩 Static Websites with Backend (API or CMS)</h2>
-
-		<table>
-
-			<tr>
-				<th>Service</th>
-
-				<th>Price</th>
-				<th>Details</th>
-
-			</tr>
-
-			<tr>
-
-				<td>Static + Backend Hosting</td>
-				<td>€100 / year</td>
-				<td>Includes API/CMS integrations and SSL. Domain/email not included.</td>
-
-			</tr>
-			<tr>
-
-				<td>Advanced Maintenance</td>
-
-				<td>€12 / month</td>
-				<td>Includes backend/API verification, uptime, domain/email management.</td>
-			</tr>
-
-			<tr>
-				<td>API or Backend Updates</td>
-				<td>€20–30 / task</td>
-				<td>Depending on complexity of the integration.</td>
-			</tr>
-
-			<tr class="highlight">
-				<td>Recommended Static + Backend Package</td>
-				<td>€244 / year</td>
-				<td>Hosting + maintenance + 2 monthly updates included.</td>
-
-			</tr>
-		</table>
-
-		<div class="extra-note">
-			💡 <strong>Note:</strong> If your static site has a complex or heavy backend, or receives high traffic,
-			pricing may be adjusted based on custom requirements.
-
+					<td>€300 / year</td>
+					<td>Includes hosting and full maintenance (annual payment).</td>
+				</tr>
+			</table>
 		</div>
 
-		<p class="note">All prices are VAT excluded. Annual packages require upfront payment. Monthly included
-			updates are not cumulative. Custom plans available on request.</p>
+		<h2>⚡ Fast & Lightweight Static Websites (No WordPress)</h2>
 
+		<div class="table-wrapper">
+			<table>
+
+				<tr>
+					<th>Service</th>
+					<th>Price</th>
+					<th>Details</th>
+
+				</tr>
+				<tr>
+					<td>Static Site Hosting</td>
+					<td>€80 / year</td>
+					<td>Includes server space and SSL. Domain and email not included (I’ll guide you through the
+						purchase).</td>
+				</tr>
+				<tr>
+					<td>Basic Maintenance</td>
+					<td>€8 / month</td>
+					<td>Quarterly checkups, uptime monitoring, domain/email management.</td>
+				</tr>
+
+				<tr>
+					<td>Text or Image Update</td>
+					<td>€15 / task</td>
+					<td>Quick edits within 30 minutes.</td>
+				</tr>
+				<tr>
+					<td>Small Functional Update</td>
+					<td>€20 / task</td>
+					<td>Adding content, images, or layout blocks.</td>
+				</tr>
+				<tr class="highlight">
+					<td>Recommended Static Site Package</td>
+					<td>€176 / year</td>
+					<td>Hosting + maintenance + 2 monthly updates included.</td>
+				</tr>
+
+			</table>
+		</div>
+
+		<h2>🧩 Static Sites with Backend (API or CMS)</h2>
+
+		<div class="table-wrapper">
+			<table>
+
+				<tr>
+					<th>Service</th>
+					<th>Price</th>
+					<th>Details</th>
+
+				</tr>
+				<tr>
+					<td>Static + Backend Hosting</td>
+					<td>€100 / year</td>
+					<td>Includes API/CMS integration support and SSL. Domain/email not included.</td>
+				</tr>
+				<tr>
+					<td>Advanced Maintenance</td>
+					<td>€12 / month</td>
+					<td>Monitoring, uptime checks, backend/API validation, domain/email support.</td>
+				</tr>
+				<tr>
+					<td>Backend/API Support</td>
+					<td>€20–30 / task</td>
+
+					<td>Based on the complexity of the integration.</td>
+				</tr>
+				<tr class="highlight">
+					<td>Static + Backend Package</td>
+					<td>€244 / year</td>
+					<td>Hosting + maintenance + 2 monthly updates included.</td>
+				</tr>
+			</table>
+		</div>
+
+
+		<div class="extra-note">
+			💡 <strong>Note:</strong> If your site includes a more complex backend, custom functionalities, or high
+			traffic, pricing may be adjusted based on a tailored estimate.
+		</div>
+
+		<p class="note">All prices are VAT excluded. Annual packages require upfront payment. Monthly included updates
+			are not cumulative. Custom solutions available on request.</p>
 
 	</div>
+
 </body>
 
 </html>
