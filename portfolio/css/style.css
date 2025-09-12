@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 :root {
     --bg-black-900: #f2f2fc;
@@ -17,7 +17,7 @@ body.dark {
 body {
     line-height: 1.5;
     font-size: 16px;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 * {
@@ -27,7 +27,8 @@ body {
     text-decoration: none;
     box-sizing: border-box;
 }
-::before, ::after {
+::before,
+::after {
     box-sizing: border-box;
 }
 ul {
@@ -97,7 +98,7 @@ ul {
     position: relative;
 }
 .section-title h2::before {
-    content: '';
+    content: "";
     height: 4px;
     width: 50px;
     background-color: var(--skin-color);
@@ -106,7 +107,7 @@ ul {
     left: 0;
 }
 .section-title h2::after {
-    content: '';
+    content: "";
     height: 4px;
     width: 25px;
     background-color: var(--skin-color);
@@ -154,7 +155,7 @@ ul {
     justify-content: center;
     align-items: center;
     z-index: 10;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
 }
 .aside .logo {
     position: absolute;
@@ -171,11 +172,11 @@ ul {
     position: relative;
 }
 .aside .logo a span {
-    font-family: 'Clicker Script', cursive;
+    font-family: "Clicker Script", cursive;
     font-size: 40px;
 }
 .aside .logo a::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 20px;
     height: 20px;
@@ -185,7 +186,7 @@ ul {
     left: 0;
 }
 .aside .logo a::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 20px;
     height: 20px;
@@ -220,7 +221,7 @@ ul {
     background-color: transparent;
 }
 .aside .nav-toggler span::before {
-    content: '';
+    content: "";
     height: 2px;
     width: 18px;
     background: var(--skin-color);
@@ -233,7 +234,7 @@ ul {
     top: 0;
 }
 .aside .nav-toggler span::after {
-    content: '';
+    content: "";
     height: 2px;
     width: 18px;
     background: var(--skin-color);
@@ -282,7 +283,7 @@ h3.hello {
     margin: 15px 0;
 }
 h3.hello span.name {
-    font-family: 'Clicker Script', cursive;
+    font-family: "Clicker Script", cursive;
     font-size: 30px;
     font-weight: 700;
     color: var(--skin-color);
@@ -306,7 +307,7 @@ h3.my-profession {
     position: relative;
 }
 .home-img::after {
-    content: '';
+    content: "";
     position: absolute;
     height: 80px;
     width: 80px;
@@ -316,7 +317,7 @@ h3.my-profession {
     bottom: -40px;
 }
 .home-img::before {
-    content: '';
+    content: "";
     position: absolute;
     height: 80px;
     width: 80px;
@@ -324,7 +325,6 @@ h3.my-profession {
     border-left: 10px solid var(--skin-color);
     left: 20px;
     top: -40px;
-    
 }
 .home .home-img img {
     margin: auto;
@@ -334,7 +334,7 @@ h3.my-profession {
 /* My Info */
 .my__info {
     display: flex;
-    column-gap: 1.0rem;
+    column-gap: 1rem;
     position: absolute;
     left: 15px;
     bottom: -7.7rem;
@@ -361,7 +361,7 @@ h3.my-profession {
     font-size: 24px;
     margin-bottom: 15px;
     font-weight: 700;
-    color: var(--text-black-900)
+    color: var(--text-black-900);
 }
 .about .about-content .about-text h3 span {
     color: var(--skin-color);
@@ -390,7 +390,7 @@ h3.my-profession {
 .about .about-content .personal-info .info-item p span {
     font-weight: 400;
     color: var(--text-black-700);
-    margin-left: 4px; 
+    margin-left: 4px;
     display: inline-block;
 }
 .about .about-content .personal-info .buttons {
@@ -425,7 +425,7 @@ h3.my-profession {
 .about .about-content .skills .skill-item {
     margin-bottom: 25px;
 }
-.about .about-content .skills .skill-item .progress .progress-in { 
+.about .about-content .skills .skill-item .progress .progress-in {
     position: absolute;
     left: 0;
     top: 0;
@@ -439,9 +439,9 @@ h3.my-profession {
     color: var(--text-black-900);
     top: -40px;
     font-weight: 400;
-    line-height: 40px; 
+    line-height: 40px;
 }
-.about .about-content .education ,
+.about .about-content .education,
 .about .about-content .experience {
     flex: 0 0 50%;
     max-width: 50%;
@@ -474,7 +474,7 @@ h3.my-profession {
     padding-bottom: 0;
 }
 .about .about-content .timeline .timeline-item::before {
-    content: '';
+    content: "";
     width: 1px;
     position: absolute;
     height: 100%;
@@ -487,7 +487,7 @@ h3.my-profession {
     left: 0;
     top: 0;
     height: 15px;
-    width: 15px;  
+    width: 15px;
     border-radius: 50%;
     background-color: var(--skin-color);
 }
@@ -505,7 +505,7 @@ h3.my-profession {
     font-size: 18px;
     margin-bottom: 15px;
     text-transform: capitalize;
-    color: var(--text-black-900)
+    color: var(--text-black-900);
 }
 .about .about-content .timeline .timeline-text {
     line-height: 25px;
@@ -594,6 +594,97 @@ h3.my-profession {
 .portfolio .portfolio-item-inner .portfolio-img img {
     width: 100%;
     display: block;
+}
+/* portfolio enhancements */
+.portfolio .portfolio-item-inner {
+    position: relative;
+}
+.portfolio .portfolio-img {
+    position: relative;
+    overflow: hidden;
+}
+/* Dedicated gradient/blur layer to ensure visibility */
+.portfolio .portfolio-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.32) 0%,
+        rgba(0, 0, 0, 0.56) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+.portfolio .portfolio-img:hover::after,
+.portfolio .portfolio-item-inner:hover .portfolio-img::after {
+    opacity: 1;
+}
+.portfolio .portfolio-img img {
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+.portfolio .portfolio-item-inner:hover .portfolio-img img,
+.portfolio .portfolio-img:hover img {
+    filter: brightness(0.7) saturate(0.95);
+    transform: scale(1.02);
+}
+/* Text overlay sits above gradient layer */
+.portfolio .portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    /* no background here; handled by ::after */
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    transition: opacity 0.35s ease;
+    pointer-events: none; /* keep whole card/link clickable */
+}
+.portfolio .portfolio-item-inner:hover .portfolio-overlay,
+.portfolio .portfolio-img:hover .portfolio-overlay {
+    opacity: 1;
+}
+.portfolio .portfolio-content {
+    width: 100%;
+    padding: 16px;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+.portfolio .portfolio-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.portfolio .portfolio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.portfolio .portfolio-tags .tag {
+    font-size: 12px;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    backdrop-filter: blur(2px);
+}
+.portfolio .portfolio-overlay.linkable .portfolio-actions {
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #fff;
+}
+.portfolio a.portfolio-link {
+    display: block;
+}
+.portfolio a.portfolio-link .portfolio-item-inner,
+.portfolio a.portfolio-link .portfolio-img {
+    cursor: pointer;
 }
 /* contact */
 .contact-title {
