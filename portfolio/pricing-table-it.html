@@ -1,272 +1,584 @@
 <!DOCTYPE html>
 <html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Listino Prezzi – Sviluppo, Hosting e Manutenzione</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --bg1: #05060a;
+                --bg2: #0f172a;
+                --ink: #f1f5f9;
+                --muted: #94a3b8;
+                --card: #111827;
+                --line: rgba(148, 163, 184, 0.18);
+                --soft: #0b1220;
+                --brand: #38bdf8;
+                --brand-2: #a855f7;
+                --accent: #34d399;
+                --warn: #fbbf24;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                font-family: "Inter", sans-serif;
+                margin: 0;
+                padding: 24px;
+                background: radial-gradient(
+                        1000px 600px at 10% -10%,
+                        rgba(56, 189, 248, 0.18),
+                        transparent 60%
+                    ),
+                    radial-gradient(
+                        800px 500px at 90% 10%,
+                        rgba(168, 85, 247, 0.15),
+                        transparent 70%
+                    ),
+                    linear-gradient(130deg, var(--bg1), var(--bg2));
+                color: var(--ink);
+            }
+            .container {
+                max-width: 1100px;
+                margin: 0 auto;
+                background: var(--card);
+                border-radius: 16px;
+                box-shadow: 0 25px 60px rgba(15, 23, 42, 0.45);
+                overflow: hidden;
+                border: 1px solid var(--line);
+            }
+            .hero {
+                padding: 36px 40px;
+                background: radial-gradient(
+                        500px 200px at 10% 10%,
+                        rgba(56, 189, 248, 0.25),
+                        transparent 70%
+                    ),
+                    radial-gradient(
+                        400px 200px at 90% 0%,
+                        rgba(168, 85, 247, 0.2),
+                        transparent 70%
+                    ),
+                    linear-gradient(180deg, rgba(17, 24, 39, 0.95), #0f172a);
+                border-bottom: 1px solid var(--line);
+            }
+            .title {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .title h1 {
+                margin: 0;
+                font-size: 1.9rem;
+                color: var(--ink);
+                letter-spacing: 0.2px;
+            }
+            .badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 6px 10px;
+                border-radius: 999px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                background: linear-gradient(
+                    90deg,
+                    rgba(56, 189, 248, 0.15),
+                    rgba(168, 85, 247, 0.15)
+                );
+                color: var(--ink);
+                border: 1px solid rgba(56, 189, 248, 0.35);
+            }
+            .hero p {
+                margin: 0.6rem 0 0;
+                color: var(--muted);
+            }
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Listino Prezzi – Hosting e Manutenzione</title>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-	<style>
-		body {
-			font-family: 'Inter', sans-serif;
-			margin: 0;
-			padding: 20px;
-			background: linear-gradient(145deg, #f2f6f9, #e7edf2);
-			color: #333;
-		}
+            .section {
+                padding: 28px 40px;
+            }
+            .section h2 {
+                color: var(--ink);
+                font-size: 1.25rem;
+                margin: 0 0 12px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding-bottom: 6px;
+                border-bottom: 2px solid rgba(148, 163, 184, 0.15);
+            }
 
-		.container {
-			max-width: 900px;
-			margin: 0 auto;
-			background: #fff;
-			border-radius: 12px;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-			padding: 40px;
-		}
+            .table-wrapper {
+                overflow-x: auto;
+                border: 1px solid var(--line);
+                border-radius: 12px;
+                background: rgba(15, 23, 42, 0.6);
+                backdrop-filter: blur(16px);
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                min-width: 720px;
+                background: transparent;
+            }
+            th,
+            td {
+                padding: 14px 16px;
+                text-align: left;
+                vertical-align: top;
+                border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+            }
+            th {
+                background: rgba(15, 23, 42, 0.9);
+                font-weight: 700;
+                color: var(--ink);
+            }
+            tr.highlight td {
+                background: linear-gradient(
+                    90deg,
+                    rgba(56, 189, 248, 0.12),
+                    rgba(52, 211, 153, 0.12)
+                );
+            }
+            .price-pill {
+                display: inline-block;
+                padding: 6px 10px;
+                border-radius: 999px;
+                font-weight: 700;
+                background: rgba(56, 189, 248, 0.12);
+                border: 1px solid rgba(56, 189, 248, 0.4);
+                color: var(--ink);
+            }
 
-		h1,
-		h2 {
-			color: #1a1a1a;
-			border-bottom: 2px solid #eee;
-			padding-bottom: 6px;
+            /* Cards for Development */
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 16px;
+                margin-top: 12px;
+            }
+            .card {
+                grid-column: span 12;
+                background: rgba(15, 23, 42, 0.85);
+                border: 1px solid rgba(148, 163, 184, 0.12);
+                border-radius: 14px;
+                padding: 18px;
+                box-shadow: 0 15px 35px rgba(2, 6, 23, 0.4);
+            }
+            @media (min-width: 760px) {
+                .card {
+                    grid-column: span 6;
+                }
+            }
+            @media (min-width: 1040px) {
+                .card {
+                    grid-column: span 4;
+                }
+            }
 
-			margin-top: 40px;
-		}
+            .card h3 {
+                margin: 0.2rem 0 0.3rem;
+                font-size: 1.05rem;
+            }
+            .tag {
+                display: inline-block;
+                padding: 4px 8px;
+                border-radius: 8px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                background: rgba(56, 189, 248, 0.12);
+                border: 1px solid rgba(56, 189, 248, 0.22);
+                color: var(--ink);
+            }
+            .range {
+                font-weight: 800;
+                font-size: 1.1rem;
+                margin: 0.4rem 0;
+                color: var(--accent);
+            }
+            .inc {
+                margin: 0.5rem 0 0;
+                padding-left: 18px;
+            }
+            .inc li {
+                margin: 0.2rem 0;
+            }
+            .muted {
+                color: var(--muted);
+                font-size: 0.92rem;
+            }
 
-		h1 {
-			font-size: 2em;
-			margin-bottom: 0.5em;
-		}
+            .extra-note {
+                background: rgba(251, 191, 36, 0.15);
+                padding: 14px;
+                border-left: 4px solid var(--warn);
+                border-radius: 8px;
+                color: #fde68a;
+                margin-top: 16px;
+            }
+            .note {
+                font-size: 0.95em;
+                color: var(--muted);
+                margin: 14px 0 0;
+            }
 
-		h2 {
-			font-size: 1.4em;
-			margin-top: 2.5em;
-		}
+            .cta {
+                margin: 24px 40px 36px;
+                padding: 16px 18px;
+                border: 1px dashed rgba(56, 189, 248, 0.4);
+                border-radius: 12px;
+                background: linear-gradient(
+                    90deg,
+                    rgba(14, 165, 233, 0.08),
+                    rgba(124, 58, 237, 0.08)
+                );
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                flex-wrap: wrap;
+                color: var(--ink);
+                backdrop-filter: blur(12px);
+            }
+            .cta b {
+                color: var(--brand);
+            }
+            .btn {
+                appearance: none;
+                border: none;
+                cursor: pointer;
+                padding: 10px 14px;
+                border-radius: 10px;
+                font-weight: 700;
+                background: linear-gradient(120deg, #0ea5e9, #7c3aed);
+                color: #fff;
+                box-shadow: 0 12px 22px rgba(15, 118, 230, 0.35);
+            }
 
-		.table-wrapper {
-			overflow-x: auto;
-		}
+            @media (max-width: 600px) {
+                body {
+                    padding: 12px;
+                }
+                .hero {
+                    padding: 22px;
+                }
+                .section {
+                    padding: 20px;
+                }
+            }
 
-		table {
-			width: 100%;
-			border-collapse: collapse;
-			margin: 1.5em 0;
-			min-width: 600px;
-		}
+            @media print {
+                body {
+                    background: #fff;
+                }
+                .container {
+                    box-shadow: none;
+                    border: none;
+                }
+                .cta {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="hero">
+                <div class="title">
+                    <span class="badge"
+                        >Listino aggiornato • +~20% su statici e backend</span
+                    >
+                    <h1>
+                        💼 Listino Prezzi – Sviluppo, Hosting e Manutenzione
+                    </h1>
+                </div>
+                <p class="muted">
+                    Tariffe trasparenti per freelance a Roma. I prezzi indicati
+                    sono IVA esclusa.
+                </p>
+            </div>
 
+            <!-- WordPress (INVARIATO) -->
+            <div class="section">
+                <h2>🌐 WordPress</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <tr>
+                            <th>Servizio</th>
+                            <th>Prezzo</th>
+                            <th>Dettagli</th>
+                        </tr>
+                        <tr>
+                            <td>Hosting WordPress (gestito)</td>
+                            <td><span class="price-pill">€120 / anno</span></td>
+                            <td>
+                                Spazio web e SSL inclusi. Dominio/email esclusi
+                                (fornisco indicazioni).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Manutenzione Completa WordPress</td>
+                            <td><span class="price-pill">€20 / mese</span></td>
+                            <td>
+                                Aggiornamenti mensili, backup, sicurezza,
+                                gestione dominio/email.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Modifica testo o immagine</td>
+                            <td>
+                                <span class="price-pill">€15 / intervento</span>
+                            </td>
+                            <td>Entro 30 minuti di lavoro.</td>
+                        </tr>
+                        <tr>
+                            <td>Piccolo aggiornamento funzionale</td>
+                            <td>
+                                <span class="price-pill">€20 / intervento</span>
+                            </td>
+                            <td>Nuove sezioni, immagini, link, ecc.</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Pacchetto WordPress Consigliato</td>
+                            <td><span class="price-pill">€300 / anno</span></td>
+                            <td>
+                                Hosting + manutenzione completa (pagamento
+                                annuale).
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
-		th,
-		td {
+            <!-- Statici (aggiornati ~20%) -->
+            <div class="section">
+                <h2>⚡ Siti Statici Veloci e Leggeri (senza WordPress)</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <tr>
+                            <th>Servizio</th>
+                            <th>Prezzo</th>
+                            <th>Dettagli</th>
+                        </tr>
+                        <tr>
+                            <td>Hosting Statico</td>
+                            <td><span class="price-pill">€95 / anno</span></td>
+                            <td>
+                                Spazio web e SSL inclusi. Dominio/email esclusi
+                                (fornisco indicazioni).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Manutenzione Base</td>
+                            <td><span class="price-pill">€10 / mese</span></td>
+                            <td>
+                                Controlli periodici, uptime, gestione
+                                dominio/email.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Modifica testo o immagine</td>
+                            <td>
+                                <span class="price-pill">€20 / intervento</span>
+                            </td>
+                            <td>Entro 30 minuti di lavoro.</td>
+                        </tr>
+                        <tr>
+                            <td>Piccolo aggiornamento funzionale</td>
+                            <td>
+                                <span class="price-pill">€25 / intervento</span>
+                            </td>
+                            <td>
+                                Aggiunta contenuti, immagini, nuove sezioni.
+                            </td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Pacchetto Statico Consigliato</td>
+                            <td><span class="price-pill">€210 / anno</span></td>
+                            <td>
+                                Hosting + manutenzione + 2 modifiche/mese
+                                incluse.
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
-			padding: 14px 16px;
-			border-bottom: 1px solid #ddd;
-			text-align: left;
-			vertical-align: top;
-		}
+            <!-- Statici + Backend (aggiornati ~20%) -->
+            <div class="section">
+                <h2>🧩 Siti Statici con Backend (API o CMS)</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <tr>
+                            <th>Servizio</th>
+                            <th>Prezzo</th>
+                            <th>Dettagli</th>
+                        </tr>
+                        <tr>
+                            <td>Hosting Statico con Backend</td>
+                            <td><span class="price-pill">€120 / anno</span></td>
+                            <td>
+                                Incluso supporto API esterne o CMS headless. SSL
+                                incluso.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Manutenzione Avanzata</td>
+                            <td><span class="price-pill">€15 / mese</span></td>
+                            <td>
+                                Verifica backend/API, uptime, sicurezza,
+                                gestione dominio/email.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Modifiche / Supporto API</td>
+                            <td>
+                                <span class="price-pill"
+                                    >€25–35 / intervento</span
+                                >
+                            </td>
+                            <td>In base alla complessità dell’integrazione.</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Pacchetto Statico + Backend</td>
+                            <td><span class="price-pill">€295 / anno</span></td>
+                            <td>
+                                Hosting + manutenzione + 2 modifiche/mese
+                                incluse.
+                            </td>
+                        </tr>
+                    </table>
+                </div>
 
+                <div class="extra-note">
+                    💡 <strong>Nota:</strong> Per backend estesi, alto traffico
+                    o funzionalità complesse, si fornisce preventivo
+                    personalizzato.
+                </div>
+            </div>
 
-		th {
-			background-color: #f9fafc;
-			font-weight: 600;
-		}
+            <!-- NUOVA SEZIONE: Sviluppo Siti -->
+            <div class="section">
+                <h2>🛠️ Sviluppo Siti (prezzi medi)</h2>
+                <p class="muted">
+                    Range indicativi: dipendono da design, contenuti,
+                    integrazioni e tempi di consegna.
+                </p>
 
+                <div class="grid">
+                    <div class="card">
+                        <span class="tag">Design pronto</span>
+                        <h3>Landing Page One-Page</h3>
+                        <div class="range">€450 – €750</div>
+                        <ul class="inc">
+                            <li>
+                                Sezioni tipiche: Hero, Servizi, Chi siamo, CTA,
+                                Contatti
+                            </li>
+                            <li>Ottimizzazione performance & SEO base</li>
+                            <li>Integrazione modulo contatto / WhatsApp</li>
+                        </ul>
+                        <p class="muted">
+                            Extra: multilingua, illustrazioni custom,
+                            copywriting.
+                        </p>
+                    </div>
 
-		.highlight {
-			background-color: #eef6fc;
-			font-weight: 600;
-		}
+                    <div class="card">
+                        <span class="tag">Design pronto</span>
+                        <h3>Sito vetrina 5 pagine</h3>
+                        <div class="range">€900 – €1.400</div>
+                        <ul class="inc">
+                            <li>
+                                ~5 pagine (es. Home, Servizi, Portfolio, About,
+                                Contatti)
+                            </li>
+                            <li>
+                                Fino a 2 componenti riutilizzabili
+                                (header/footer custom)
+                            </li>
+                            <li>SEO tecnico, schema dei dati base</li>
+                        </ul>
+                        <p class="muted">
+                            +€150/pagina extra • +€200 per lingua aggiuntiva.
+                        </p>
+                    </div>
 
+                    <div class="card">
+                        <span class="tag">Design personalizzato</span>
+                        <h3>Sito vetrina custom (Statico)</h3>
+                        <div class="range">€1.600 – €2.600</div>
+                        <ul class="inc">
+                            <li>Design UI dedicato, micro-animazioni</li>
+                            <li>
+                                Build Astro/Next ottimizzata a 100 Lighthouse
+                            </li>
+                            <li>Form avanzati, mappe, gallery, blog statico</li>
+                        </ul>
+                        <p class="muted">Include handoff e mini-guida d’uso.</p>
+                    </div>
 
-		.note,
-		.extra-note {
-			font-size: 0.95em;
-			color: #555;
-			margin-top: 0.8em;
-		}
+                    <div class="card">
+                        <span class="tag">Headless / API</span>
+                        <h3>Statico + CMS headless</h3>
+                        <div class="range">€2.400 – €4.000</div>
+                        <ul class="inc">
+                            <li>Setup CMS (es. Sanity/Contentful/Strapi)</li>
+                            <li>Ruoli, anteprima, collection tipi contenuto</li>
+                            <li>API integrate (newsletter, form, analytics)</li>
+                        </ul>
+                        <p class="muted">Canone CMS non incluso.</p>
+                    </div>
 
-		.extra-note {
-			background: #fff8e1;
-			padding: 12px;
-			border-left: 4px solid #ffc107;
+                    <div class="card">
+                        <span class="tag">E-commerce</span>
+                        <h3>Shop base (Woo/Shopify)</h3>
+                        <div class="range">€1.800 – €3.500</div>
+                        <ul class="inc">
+                            <li>Catalogo iniziale (fino a 10 prodotti)</li>
+                            <li>Pagamenti, spedizioni, tassazioni base</li>
+                            <li>Template prodotto e carrello ottimizzati</li>
+                        </ul>
+                        <p class="muted">
+                            Piani/commissioni piattaforma esclusi.
+                        </p>
+                    </div>
 
-			margin-top: 20px;
-			border-radius: 6px;
+                    <div class="card">
+                        <span class="tag">Performance</span>
+                        <h3>Migrazione & Performance</h3>
+                        <div class="range">€300 – €900</div>
+                        <ul class="inc">
+                            <li>Migrazione hosting/DNS</li>
+                            <li>Ottimizzazioni Core Web Vitals</li>
+                            <li>Hardening sicurezza base</li>
+                        </ul>
+                        <p class="muted">Report prima/dopo incluso.</p>
+                    </div>
+                </div>
+            </div>
 
-		}
+            <div class="section">
+                <p class="note">
+                    Tutti i prezzi sono IVA esclusa. I pacchetti includono
+                    pagamento annuale anticipato dove indicato. Le modifiche
+                    incluse non sono cumulabili.
+                </p>
+            </div>
 
-		@media (max-width: 600px) {
-			body {
-				padding: 10px;
-			}
-
-
-			.container {
-				padding: 20px;
-			}
-
-			h1 {
-				font-size: 1.5em;
-			}
-
-			h2 {
-				font-size: 1.2em;
-			}
-
-
-			th,
-			td {
-				padding: 10px 12px;
-			}
-
-			table {
-				font-size: 0.95em;
-			}
-		}
-
-
-		@media print {
-			body {
-				background: #fff;
-			}
-
-
-			.container {
-				box-shadow: none;
-				border: none;
-			}
-
-			.table-wrapper {
-				overflow: visible;
-			}
-
-		}
-	</style>
-</head>
-
-<body>
-	<div class="container">
-
-		<h1>💼 Listino Prezzi – Hosting e Manutenzione Siti Web</h1>
-
-		<h2>🌐 WordPress</h2>
-
-		<div class="table-wrapper">
-			<table>
-
-				<tr>
-					<th>Servizio</th>
-					<th>Prezzo</th>
-					<th>Dettagli</th>
-				</tr>
-				<tr>
-					<td>Hosting WordPress (gestito)</td>
-					<td>€120 / anno</td>
-					<td>Spazio web e SSL inclusi. Dominio/email esclusi (fornisco indicazioni).</td>
-				</tr>
-				<tr>
-					<td>Manutenzione Completa WordPress</td>
-					<td>€20 / mese</td>
-					<td>Aggiornamenti mensili, backup, sicurezza, gestione dominio/email.</td>
-				</tr>
-				<tr>
-					<td>Modifica testo o immagine</td>
-					<td>€15 / intervento</td>
-					<td>Entro 30 minuti di lavoro.</td>
-				</tr>
-				<tr>
-					<td>Piccolo aggiornamento funzionale</td>
-					<td>€20 / intervento</td>
-
-					<td>Nuove sezioni, immagini, link, ecc.</td>
-				</tr>
-				<tr class="highlight">
-					<td>Pacchetto WordPress Consigliato</td>
-					<td>€300 / anno</td>
-					<td>Hosting + manutenzione completa (pagamento annuale).</td>
-				</tr>
-			</table>
-		</div>
-
-		<h2>⚡ Siti Statici Veloci e Leggeri (senza WordPress)</h2>
-		<div class="table-wrapper">
-			<table>
-				<tr>
-					<th>Servizio</th>
-					<th>Prezzo</th>
-					<th>Dettagli</th>
-				</tr>
-				<tr>
-					<td>Hosting Statico</td>
-					<td>€80 / anno</td>
-
-					<td>Spazio web e SSL inclusi. Dominio/email esclusi (fornisco indicazioni).</td>
-				</tr>
-				<tr>
-					<td>Manutenzione Base</td>
-					<td>€8 / mese</td>
-					<td>Controlli periodici, uptime, gestione dominio/email.</td>
-				</tr>
-				<tr>
-					<td>Modifica testo o immagine</td>
-					<td>€15 / intervento</td>
-					<td>Entro 30 minuti di lavoro.</td>
-				</tr>
-
-				<tr>
-					<td>Piccolo aggiornamento funzionale</td>
-					<td>€20 / intervento</td>
-					<td>Aggiunta contenuti, immagini, nuove sezioni.</td>
-				</tr>
-				<tr class="highlight">
-					<td>Pacchetto Statico Consigliato</td>
-					<td>€176 / anno</td>
-					<td>Hosting + manutenzione + 2 modifiche/mese incluse.</td>
-				</tr>
-			</table>
-		</div>
-
-		<h2>🧩 Siti Statici con Backend (API o CMS)</h2>
-		<div class="table-wrapper">
-			<table>
-				<tr>
-					<th>Servizio</th>
-					<th>Prezzo</th>
-					<th>Dettagli</th>
-
-				</tr>
-				<tr>
-					<td>Hosting Statico con Backend</td>
-					<td>€100 / anno</td>
-					<td>Incluso supporto API esterne o CMS headless. SSL incluso.</td>
-				</tr>
-				<tr>
-					<td>Manutenzione Avanzata</td>
-
-					<td>€12 / mese</td>
-					<td>Verifica backend/API, uptime, sicurezza, gestione dominio/email.</td>
-				</tr>
-				<tr>
-					<td>Modifiche / Supporto API</td>
-					<td>€20–30 / intervento</td>
-					<td>In base alla complessità dell’integrazione.</td>
-				</tr>
-				<tr class="highlight">
-					<td>Pacchetto Statico + Backend</td>
-					<td>€244 / anno</td>
-					<td>Hosting + manutenzione + 2 modifiche/mese incluse.</td>
-				</tr>
-			</table>
-		</div>
-
-		<div class="extra-note">
-			💡 <strong>Nota:</strong> Per siti statici con backend particolarmente estesi, con traffico elevato o
-			funzionalità complesse, i prezzi potrebbero essere rivisti con preventivo personalizzato.
-		</div>
-
-		<p class="note">Tutti i prezzi sono IVA esclusa. I pacchetti includono pagamento annuale anticipato. Le
-			modifiche incluse nei pacchetti non sono cumulabili. Contattami per esigenze personalizzate.</p>
-
-	</div>
-</body>
-
+            <div class="cta">
+                <div>
+                    Hai esigenze particolari?
+                    <b>Creo un preventivo su misura</b> in base a funzionalità,
+                    contenuti e scadenze.
+                </div>
+                <button class="btn">Richiedi preventivo</button>
+            </div>
+        </div>
+    </body>
 </html>
