@@ -14,6 +14,15 @@ services:
       - traefik.http.routers.blog.rule=Host(`blog.gabudev.cloud`)
       - traefik.http.routers.blog.tls=true
       - traefik.http.routers.blog.tls.certresolver=myresolver
+    # 🔒 hardening
+    user: "1000:1000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
 
   portfolio:
     image: ghcr.io/gabref/portfolio:latest
@@ -27,6 +36,15 @@ services:
       - traefik.http.routers.portfolio.rule=Host(`gabudev.cloud`)
       - traefik.http.routers.portfolio.tls=true
       - traefik.http.routers.portfolio.tls.certresolver=myresolver
+    # 🔒 hardening
+    user: "1000:1000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
 
 networks:
   vps-reverse:
