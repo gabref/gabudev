@@ -11,10 +11,10 @@
   "dependencies": {
     "markdown-it": "^14.1.0",
     "markdown-to-jsx": "^7.7.1",
-    "next": "15.0.3",
+    "next": "15.0.7",
     "next-mdx-remote": "^5.0.0",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sugar-high": "^0.7.5"
   },
   "devDependencies": {
