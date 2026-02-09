@@ -37,15 +37,16 @@ services:
       - traefik.http.routers.portfolio.tls=true
       - traefik.http.routers.portfolio.tls.certresolver=myresolver
     # 🔒 hardening
-    read_only: true
-    tmpfs:
-      - /var/cache/nginx
-      - /var/run
-      - /tmp
+    # user: "1000:1000"
+    # read_only: true
+    # tmpfs:
+    #   - /var/cache/nginx
+    #   - /var/run
+    #   - /tmp
     security_opt:
       - no-new-privileges:true
-    cap_drop:
-      - ALL
+    # cap_drop:
+    #   - ALL
 
 networks:
   vps-reverse:
