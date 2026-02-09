@@ -37,7 +37,6 @@ services:
       - traefik.http.routers.portfolio.tls=true
       - traefik.http.routers.portfolio.tls.certresolver=myresolver
     # 🔒 hardening
-    user: "1000:1000"
     read_only: true
     tmpfs:
       - /var/cache/nginx
